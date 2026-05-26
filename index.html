@@ -1,0 +1,2051 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lurking - Interactive Film Menu</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: #0b0b0b;
+        color: #f5f5f5;
+      }
+
+      header {
+        text-align: center;
+        padding: 30px 0;
+        font-size: 36px;
+        font-weight: 700;
+        color: #e50914;
+        letter-spacing: 2px;
+        text-shadow: 0 0 15px #ff0000;
+      }
+
+      subtitle {
+        display: block;
+        text-align: center;
+        font-size: 18px;
+        color: #e50914;
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px #ff0000;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      nav button {
+        background: transparent;
+        border: 2px solid #e50914;
+        color: #e50914;
+        padding: 10px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+        text-transform: uppercase;
+      }
+
+      nav button:hover {
+        background: #e50914;
+        color: #0b0b0b;
+        box-shadow: 0 0 15px #ff0000;
+      }
+
+      section {
+        display: none;
+        text-align: center;
+        animation: fadeIn 0.5s ease-in-out;
+      }
+
+      section.active {
+        display: block;
+      }
+
+      .disclaimer-box {
+        max-width: 70%;
+        margin: auto;
+        background: #141414;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px #e50914;
+        text-align: center;
+      }
+
+      .disclaimer-box h2 {
+        color: #e50914;
+        margin-bottom: 15px;
+        text-shadow: 0 0 10px #ff0000;
+      }
+
+      .disclaimer-box p {
+        font-size: 16px;
+        line-height: 1.6;
+        color: #f5f5f5;
+      }
+
+      video {
+        width: 80%;
+        border-radius: 10px;
+        box-shadow: 0 0 20px #e50914;
+        margin-top: 20px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+        padding: 20px;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      .card {
+        background: #141414;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 0 10px #e50914;
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      .card h3 {
+        color: #e50914;
+        margin-bottom: 5px;
+      }
+
+      .card p {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+      
+      .chapter-list {
+        width: 70%;
+        margin: auto;
+        text-align: left;
+        background: #141414;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px #e50914;
+      }
+
+      .chapter-list li {
+        margin: 12px 0;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .chapter-list li:hover {
+        color: #e50914;
+        text-shadow: 0 0 10px #ff0000;
+      }
+
+      .credit-photo {
+      width: 120px;        
+      height: 120px;       
+      object-fit: cover;   
+      border-radius: 50%;  
+      margin-bottom: 10px;
+      box-shadow: 0 0 10px #e50914; 
+      display: block;
+      margin-left: auto;
+      margin-right: auto;  
+    }
+
+      .poster-img {
+      max-width: 60%;   
+      height: auto;    
+      border-radius: 10px;
+      box-shadow: 0 0 20px #e50914;
+      margin-top: 20px;
+    }
+
+    .script-container {
+      max-width: 80%;
+      margin: auto;
+      text-align: left;
+      background: #141414;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #e50914;
+      max-height: 500px;   
+      overflow-y: auto;
+    }
+
+    .script-text {
+      font-family: 'Courier New', monospace; 
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap; 
+      color: #f5f5f5;
+    }
+
+      @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+      }
+    </style>
+  </head>
+  <body>
+    <header>LURKING</header>
+    <subtitle>Presented By: Silent Production</subtitle>
+
+    <nav>
+      <button onclick="showSection('disclaimer')">⚠ Disclaimer</button>
+      <button onclick="showSection('trailer')">▶ Trailer</button>
+      <button onclick="showSection('film')">🎬 Film</button>
+      <button onclick="showSection('chapters')">📚 Chapter Selection</button>
+      <button onclick="showSection('script')">📖 Script</button>
+      <button onclick="showSection('poster')">🖼 Poster</button>
+      <button onclick="showSection('credits')">🎥 Credits</button>
+    </nav>
+
+<section id="disclaimer" class="active">
+  <div class="disclaimer-box">
+    <h2>⚠ Disclaimer</h2>
+    <p>
+      This motion picture is a work of fiction. All names, characters, organizations,
+       and events depicted are products of creative imagination. Any resemblance to actual persons,
+        living or deceased, or to real events, is purely coincidental. Viewer discretion is strongly
+         advised due to the thriller and suspense themes portrayed.
+    </p>
+  </div>
+</section>
+
+
+
+    <!-- Trailer -->
+    <section id="trailer">
+      <h2>🎞 Official Trailer</h2>
+      <video controls>
+        <source src="vids\teaser.mp4" type="video/mp4">
+        Your browser does not support video playback.
+      </video>
+    </section>
+
+    <!-- Main Film -->
+    <section id="film">
+      <h2>🎬 Full Film</h2>
+      <video id="mainFilm" controls>
+        <source src="vids\Lurking.mp4" type="video/mp4">
+        Your browser does not support video playback.
+      </video>
+    </section>
+
+    <!-- Chapter Selection -->
+    <section id="chapters">
+      <h2>📚 Chapter Selection</h2>
+      <ul class="chapter-list">
+        <li onclick="goToScene(0)">Scene 1 – The Trend</li>
+        <li onclick="goToScene(66)">Scene 2 – News on the TV</li>
+        <li onclick="goToScene(248)">Scene 3 – Accusation</li>
+        <li onclick="goToScene(491)">Scene 4 – Investigation</li>
+        <li onclick="goToScene(780)">Scene 5 – Monitoring Liam’s Phone</li>
+        <li onclick="goToScene(1320)">Scene 6 – Back to Square One?</li>
+        <li onclick="goToScene(1383)">Scene 7 – Friend?</li>
+        <li onclick="goToScene(1475)">Scene 8 – Confidential</li>
+        <li onclick="goToScene(1657)">Scene 9 – Truth</li>
+        <li onclick="goToScene(1838)">Scene 10 – False Mirror</li>
+        <li onclick="goToScene(1907)">Scene 11 – Confrontation</li>
+        <li onclick="goToScene(2166)">Scene 12 – Escape?</li>
+        <li onclick="goToScene(2299)">Credits</li>
+      </ul>
+
+    </section>
+
+<!-- Script -->
+<section id="script">
+  <div class="script-header">
+    <h2>Lurking</h2>
+    <p class="producer">Presented by: Silent Production</p>
+  </div>
+
+  <!-- Scrollable script container -->
+  <div class="script-container">
+
+    <h3>Scene 1 – The Trend</h3>
+    <pre class="script-text">
+Cold Open - Breaking News
+INT. SCREEN/MONTAGE - NIGHT
+
+CUT IN:
+
+A real news clips from various report play on screen
+
+No buildup. No fade. Just straight into the report.
+
+REAL NEWS CLIP #1 - INSIDE EDITION
+“Creep caught on camera. The surveillance video shows a stalker in action, loitering outside his victim’s home in the dead of night and uttering nonsense”
+
+REAL NEWS CLIP #2 - INSIDE EDITION
+“... We are meant to be together”
+“How did that make you feel?”
+“It was absolutely terrifying”
+
+REAL NEWS CLIP #3 - BCC NEWS
+“Chris has been stalked for six years by a man she sat next to once in a team meeting at work”
+
+ REAL NEWS CLIP #4 - BCC NEWS
+“... The moment you see a physical image of somebody you then realize that actually this is really real. Someone that has absolutely no kind of relationship with me, whatsoever can be completely obsessed”
+
+SMASH CUT TO SILENCE
+
+CUT TO: 
+EXT.  PUBLIC PARK - NIGHT
+
+Wide shot.
+
+Completely quiet.
+
+SAM sits on a bench.
+
+Still.
+
+Unmoving.
+
+His phone lights up.
+INSERT - PHONE SCREEN (BRIEF, UNCLEAR)
+
+Unknown Message
+
+Sam does not react.
+
+A long pause.
+
+His body leans towards the left and slump to the bench.
+
+Revealing a deep cut in his neck and his lifeless eyes stares at nothing
+    </pre>
+
+    <h3>Scene 2 – News on the TV</h3>
+    <pre class="script-text">
+INT. LIAM’S LIVING ROOM – AFTERNOON
+
+Dimly lit sala of a modest Caloocan apartment. 
+
+LIAM, JAKE, AND GRACE sits around, absorbed in their phones
+
+OVER ARCHIE’S SHOULDER, the television is on. A female news anchor speaks seriously in a mix of English and Tagalog.
+
+NEWS ANCHOR
+“...patuloy pa rin ang imbestigasyon sa pagpatay kay Sam Martinez, bente anyos na natagpuan sa parke tatlong linggo na ang nakalipas. Hanggang ngayon, unresolved pa rin ang kaso. Ayon sa bagong panayam ng pulisya, posibleng konektado ito sa tumataas na stalking incidents sa buong Metro Manila...”
+
+Archie is watching the news intently.
+
+The others keep scrolling, oblivious.
+
+NEWS ANCHOR 
+“Sa latest police report, tumataas ang bilang ng stalking-related incidents sa Metro Manila. Maraming biktima ang nagre-report ng anonymous messages, hacked accounts, at pakiramdam na may sumusunod sa kanila...”
+
+Archie shakes his head and makes an offhand comment without looking away from the screen.
+
+ARCHIE
+(uneasy)
+“Grabe… parang ang lala na ngayon”
+Grace’s thumb stops mid-scroll and look at Archie’s back
+
+GRACE
+“Wala naman tayong magagawa diyan. Mag-ingat na lang talaga.”
+
+JAKE
+(laughing)
+“Relax. Ano bang meron sa’tin para i-stalk?”
+
+GRACE
+“Common sense. Kaso wala ka nun”
+
+Everyone laughs—
+
+Except Archie.
+
+ARCHIE
+“Ewan… nakakatakot pa rin”
+
+LIAM
+(trying to lighten the mood)
+Alam nyo manood na lang tayo ng movie. Nag-aaway na kayo e. Kukuha lang ako ng pagkain
+
+Liam shoves his phone in the pocket
+
+INT. KITCHEN - AFTERNOON
+
+Liam enters the kitchen and opens the fridge.
+
+BUZZ. BUZZ. BUZZ
+
+He grabs the phone from the pocket
+
+UNKNOWN NUMBER
+“I saw you”
+
+He frowns and he reaches the coke inside the fridge.
+
+BUZZ. BUZZ. BUZZ
+
+He looks at his phone again, showing the same unknown number
+
+UNKNOWN NUMBER
+“Cold coke?”
+
+His grip tightened around the phone
+
+He took a deep breath before slowly looking at the window with his eyes preventing his face from turning
+
+LIAM
+(whispers)
+“Baka wrong number lang”
+
+He stays still for a minute without noticing Grace enters the kitchen.
+
+She tap him on the shoulder that makes he flinch away
+
+GRACE
+(surprise)
+“Woah, bat parang nakakita ka ba ng multo?”
+
+LIAM
+(sigh in relief)
+“Nananakot ka kaya”
+
+GRACE 
+“Hindi mo lang ako narinig pumasok”
+
+She grabs the snacks–but her eyes go straight to Liam.
+
+She studies his face
+
+A beat
+
+GRACE
+(soft, worried)
+“Okay ka lang?”
+
+LIAM 
+(too quick, smiles)
+“Yup!”
+
+GRACE
+(slight tilt of head)
+“Sure?”
+
+A beat 
+
+GRACE (CONT’D)
+“Okay, sabihin mo lang kung may problema ka”
+
+Liam nods.
+
+INT. LIAM’S LIVING ROOM – AFTERNOON
+
+Liam and Grace return and place the snacks at the table.
+
+JAKE scrolls through a list of movies.
+
+Liam sits – but he’s distracted in his phoone
+
+BUZZ. BUZZ. BUZZ 
+
+His phone keeps vibrating.
+
+JAKE
+(looks at Liam)
+“Tinatawag ka na ng jowa mo. Kumain ka na raw ba?”
+
+The group laughs and Liam force a laugh 
+
+Liam
+“Mama ko lang yun.”
+
+A beat
+
+LIAM (CON’T)
+(adds quickly)
+“Nagpapabili ng sibuyas.”
+
+Liam mutes the phone as his smile fades immediately.
+
+His eyes slowly drift to– THE WINDOW
+    </pre>
+
+    <h3>Scene 3 – Accusation</h3>
+    <pre class="script-text">
+INT. CLASSROOM – MORNING
+
+Liam sits at the chair with his face looking down
+Grace, Jake and Archie standing while talking.
+
+ARCHIE
+“May bago na naman kagabi. Parang dumadami na talaga”
+
+JAKE
+“Ayan ka na naman. Kakapanood mo ‘yan”
+
+ARCHIE
+(annoyed)
+“Hindi ako praning”
+
+JAKE
+(Pats his shoulder)
+Sinasabi ko lang, wala naman mangyayari sa’tin dahil hindi naman tayo mayaman
+
+GRACE
+Hindi naman kasi pareho ang magnanakaw at stalker. 
+
+JAKE
+Pareho lang ‘yun–parehong delikado
+
+GRACE
+Hindi nga. Magkaiba ‘yun, tanungin mo si Liam. 
+
+Everyone looks at Liam for a second.
+
+Liam remains quiet, lost on his own world
+
+GRACE
+(high voice)
+LIAM?
+
+LIAM
+(startled, force smile)
+Bakit?
+
+GRACE
+Okay ka lang ba? Ang tahimik mo kanina pa
+
+Liam sigh and clasp his hands together
+
+LIAM
+(quiet, tense)
+“Feeling ko… may sumusunod sa akin.”
+
+A pause.
+
+JAKE
+(Joking)
+“Baka trip lang ‘yan?”
+
+Liam suddenly SLAMS his hands at the table.
+
+Everyone flinches.
+
+LIAM
+“Prank?! Mukha ba akong nagbibiro?!”
+
+He immediately grabs his phone from his pocket and open it to the messages
+
+Close-up: messages.
+
+UNKNOWN NUMBER MESSAGES:
+“I saw you today”
+“Alam ko kung saan ka nakatira”
+“Replyan mo naman ako”
+
+Silence.
+
+GRACE
+(worried)
+“Kailan pa ‘to?”
+
+LIAM
+“Last week pa.”
+
+Grace and Jake look at each other worried then back at Liam.
+
+Archie remains standing looking at the 
+
+GRACE
+(worried)
+“Bakit hindi mo sinabi noon pa?”
+
+JAKE
+“Pina-prank mo lang siguro kami pre”
+
+LIAM
+(quickly, annoyed)
+“Prank! Ano klaseng tao ang gagawa nito?! Kahit sino ang biktima ng prank ay mababaliw din!”
+
+Grace places a hand to Liam’s shoulder to calm him.
+
+ARCHIE
+“”Ni-report mo na?”
+
+Liam avoided facing everyone.
+
+LIAM
+(soft voice)
+“Oo”
+
+ARCHIE
+“Nahanap na ba ang stalker”
+
+Liam shakes his head
+
+LIAM
+“Hindi nila sineseryoso reklamo ko! Ilang beses ko ni-report yung stalking pero sabi lang nila ay mag-ingat”
+
+A beat.
+
+GRACE
+“Ano gagawin mo nyan?”
+
+JAKE
+“Hanapin ang stalker”
+
+ARCHIE
+(disbelief)
+“Are you serious? Edi mas lalong napahamak si Liam”
+
+JAKE
+“Sabi ko hanapin, hindi confrontation. Tsaka kapag nakakuha na tayo enough evidence baka seryosohin na ng mga pulis ang kaso”
+
+GRACE
+“Delikado pa rin, inii-stalk nga si Liam. Paano tayo maniniguro na hindi malaman ng stalker na hinahanap natin sya?”
+
+JAKE
+“Edi tayo hahanap. Si Liam habol niya diba, edi malaya tayo mag-hanap”
+
+ARCHIE
+“I hate this idea”
+
+LIAM
+(shaken, stuttering)
+“Na… natatakot na ako.”
+
+Everyone looks at Liam
+
+GRACE
+“Meron ka bang kakilala na may galit sayo?”
+
+LIAM
+“Wala”
+
+JAKE
+“Ex?”
+
+LIAM
+“Wala rin”
+
+JAKE
+“Wala na bang iba?”
+
+A pause.
+
+GRACE
+“How about Justin?”
+
+ARCHIE
+“Justin Lopez?”
+
+Grace nods and looks back to Liam
+
+GRACE
+“Diba dati nakuha mo yung internship na dapat sa kanya?”
+
+ARCHIE
+“Ang babaw naman ng dahilan nya para gawin ‘yan”
+
+JAKE
+“Pero dahilan pa rin ‘yan para gawin”
+ 
+ARCHIE
+“Ina-accuse niyo na si Justin?”
+
+JAKE
+“Hindi naman. Nag-iisip lang. Malay mo gusto diba nadala sa selos or insecurity na si Liam is much better sa kanya”
+
+ARCHIE
+“Hindi naman fiction to be, real life to. Walang ganyan.”
+
+JAKE
+“Malay mo, meron.”
+
+ARCHIE
+“Wala”
+
+JAKE
+“Meron”
+
+LIAM
+(frustrated)
+“Tama na!”
+
+Liam stands abruptly.
+
+Archie and Jake stop arguing and look at Liam, stunned.
+
+LIAM
+“Bakit parang laro lang ‘to sa inyo?”
+
+A beat.
+
+ Archie holds Liam’s shoulder
+
+ARCHIE
+(low voice)
+“Kumalma ka muna, Liam”
+
+Liam brush him off
+
+LIAM
+(voice raising)
+“Anong kalma?! Hindi kasi kayo yung nasa sitwasyon ko.”
+
+Liam storms off the room
+
+JAKE
+(shout)
+Liam, tinutulungan ka lang namin
+
+ARCHIE
+Not now, Jake.
+
+They rush out after him. 
+
+INT. EMPTY CLASSROOM – MOMENTS LATER
+
+Liam’s phone sits on the desk.
+
+It BUZZES.
+
+ON SCREEN:
+UNKNOWN NUMBER: 
+“Naiwan mo cellphone mo.”
+
+A beat.
+
+The door slowly creaks open.
+
+A GLOVED HAND slips into frame and grabs the phone.
+
+The screen lights up — the message is still visible.
+
+A beat.
+
+The gloved hand powers down the phone.
+
+The door quietly closes.
+
+FADE OUT
+    </pre>
+
+    <h3>Scene 4 – Investigation</h3>
+    <pre class="script-text">
+INT. JAKE’S BEDROOM – AFTERNOON
+
+Grace and Archie sit at the bed.
+
+They both look at the cork board full of evidence on the wall.
+
+GRACE
+“Hindi ba natin papapuntahin si Liam?”
+
+JAKE
+(shake head)
+“Hindi. Malalaman agad ng stalker niya na hinahanap natin siya”
+
+ARCHIE
+“Is that an evidence board?”
+
+JAKE
+(proudly)
+“Yup! Ito yung mga nakuha kong evidence and sinubukan ko sila i-connect sa isa’t isa.”
+
+
+A cork board filled edge-to-edge—but unlike a logical layout, everything points toward one person.
+
+INSERT - EVIDENCE BOARD – “JUSTIN DID IT”
+
+Photos. Notes. Red string everywhere.
+
+At the center — a printed photo of JUSTIN LOPEZ.
+His face is circled aggressively in red marker.
+
+Above it, written in messy, heavy strokes:
+
+“JUSTIN = STALKER?”
+
+Below:
+
+“MAY MOTIVE.”
+
+Jake stands in front of the board, looking at Archie and Grace like he’s already solved everything.
+
+---
+
+LEFT SIDE – “MOTIVE”
+
+Printed note: “INTERNSHIP ISSUE”
+
+Below it:
+
+“Liam got it”
+“Justin didn’t”
+“Public embarrassment?”
+
+A smaller sticky note, pressed hard:
+
+“INGGIT?”
+“INSECURE??”
+
+---
+
+
+RIGHT SIDE – “BEHAVIOR”
+
+Pinned notes:
+
+“Tahimik siya minsan”
+“Di masyado sumasama sa group”
+“Laging naka-phone”
+
+Circled aggressively:
+
+“POSSIBLE OBSESSIVE TYPE”
+
+---
+
+TOP SECTION – “OPPORTUNITY”
+
+A class schedule.
+
+Highlighted overlaps.
+
+Notes:
+
+“Same building”
+“Easy to follow”
+“Knows routine”
+
+Another note:
+
+“He knows where Liam goes”
+
+---
+
+BOTTOM SECTION – “CONCLUSION”
+
+“JUSTIN IS THE STALKER”
+
+Underneath:
+
+* “Motive ✔”
+* “Opportunity ✔”
+* “Behavior ✔”
+
+Archie roamed his hand to the evidence across the corkboard.
+
+Archie then looks back at Jake.
+
+ARCHIE
+“This is an accusation, Jake. Hindi ito evidence”
+
+JAKE
+“Hindi. Lahat ‘to may koneksyon”
+
+GRACE
+“Hindi ko pa rin makita”
+
+ARCHIE
+“Bakit hindi na lang ulit i-report?” 
+
+JAKE
+“Hindi ka ba nakikinig? Ni-report na ni Liam ilang beses na pero hindi siya sineseryoso.”
+
+GRACE
+“Delikado pa rin ginagawa natin”
+
+JAKE
+“Mas delikado kung wala tayong gagawin”
+
+A beat.
+
+ARCHIE
+“Fine, I’ll give you a chance to explain at least”
+
+
+Jake exhales, trying to steady himself.
+
+JAKE
+“Ganito ’yan…”
+
+(gestures to the center photo)
+
+“Si Justin lang ang may solid na dahilan para gawin ang stalking”
+
+(points to MOTIVE)
+
+“May reason siya. Hindi lang basta “inggit” pero may history sila ni Liam.”
+
+(points between notes)
+
+“Sa kaniya binibigay ang internship bago man nag-apply si Liam pero nung dumating siya doon sa company. Kay Liam na nila binigay ang internship dahil sa qualification niya”
+
+(beat)
+
+“Kung may taong pwedeng mag-hold ng galit. Siya ’yun.”
+
+
+ARCHIE
+“Pwede. Pero assumption pa rin.”
+
+Jake nods
+
+JAKE
+“Oo. Kaya hindi ako nagre-rely lang sa motive.”
+
+(points upward)
+
+“Opportunity.
+Pareho sila ng schedule. Parehong building. Hindi niya kailangan mag-effort para sundan si Liam….nandun na siya.”
+
+GRACE
+“Meron pa ba tayo ibang kaklase na may parehong schedule?”
+
+
+Jake walks to the right side. (movement)
+
+JAKE
+“Alam ko at isa pa yung behavior niya. Hindi ito “weird equals guilty.”
+(gestures to notes)
+
+“Pero kung pagsasamahin mo, distance sa group, laging nasa phone at observant type”
+
+(looks at them)
+
+“—posible siyang nakakakita ng patterns kay Liam.”
+
+Archie crosses his arms.
+
+ARCHIE
+“Posible” ulit.
+
+Jake nods again. He’s not denying it anymore.
+
+JAKE
+“Oo. Pero kung pagsasamahin mo sila. May dahilan siya para magalit, may access siya kay Liam, at may capacity siya na mag-observe without being noticed”
+
+Grace looks uneasy now.
+
+GRACE
+Pero hindi pa rin siya direct link sa messages…
+
+JAKE
+“Tama.”
+
+(points carefully)
+
+“Hindi sila isang generic na message, para familiar siya sa pattern of living ni Liam”
+
+ARCHIE
+“Hindi lang siya yung pwedeng may ganung access.”
+
+JAKE
+“Pero siya yung… pinaka nagfi-fit sa lahat ng factors.”
+
+Silence. (wideshot - 5secs)
+
+ARCHIE
+“Hindi pa rin proof ’yan.”
+
+JAKE
+“Hindi ko sinasabing proof. Pero lahat ng evidence ay—” (2secs)
+
+(points to the board connections)
+
+“—lahat nakaturo sa kanya.”
+
+
+GRACE
+(nervous)
+“Kung siya nga ’yon…”
+
+ARCHIE
+(serious)
+“Jake, pag nagkamali ka dito—”
+
+JAKE
+“Hindi ’to hula.”
+
+A beat
+
+Grace hesitates — then remembers something.
+
+GRACE
+“May naalala ako”
+
+ARCHIE
+Ano?
+
+GRACE
+“Yung phone ni Liam… na nawala nung nag-walk out sya last time.”
+
+They look at each other
+
+GRACE
+“Hindi ba… si Justin yung nagbalik?”
+
+Silence. (5secs)
+
+JAKE
+(slowly)
+“Oo nga.”
+
+CUT TO:
+
+FLASHBACK:
+
+
+Grace, Jake and Archie looks at Liam
+
+Liam hastily searches through her bag.
+
+LIAM
+“Nakita niyo phone ko?”
+
+ARCHIE
+“Hindi. Saan mo huling nakita?”
+
+LIAM
+“Hindi ko alam”
+
+Liam looks stressed, checking his pockets — worried.
+
+From behind—
+
+JUSTIN approaches. Calm. Watching.
+
+He holds out a phone.
+
+JUSTIN
+“Sa’yo ’to, diba?”
+
+Liam freezes.
+
+LIAM
+“…Saan mo nakuha ’yan?”
+
+Justin shrugs slightly.
+
+JUSTIN
+“Napulot ko lang.”
+
+A beat.
+
+Their eyes lock — something off.
+
+Justin turns and walks away.
+
+Liam watches him, unsettled.
+
+END FLASHBACK.
+
+BACK TO SCENE:
+
+INT. JAKE’S BEDROOM – AFTERNOON 
+
+No one speaks. (5secs)
+
+GRACE
+(quiet)
+“Hindi niya sinabi kung saan niya nakuha…”
+
+JAKE
+(leans back)
+“Exactly.”
+
+ARCHIE
+“Baka… baka pinulot lang talaga.”
+
+JAKE
+“Or…may gusto siyang hanapin sa phone pero may lock kaya binalik.”
+
+GRACE
+“Ano na gagawin natin kung si Justin talaga ang stalker.”
+
+JAKE
+“Sasabihin natin kay Liam at iconfront niya si Justin. Irerecord natin yung usapan as proof.”
+    </pre>
+
+    <h3>Scene 5 – Monitoring Liam’s Phone</h3>
+    <pre class="script-text">
+INT. DARK ROOM – NIGHT
+
+FADE IN
+
+The glow of a laptop lights the space.
+
+On it – LIAM’S PHONE INTERFACE, mirrored live
+
+Incoming messages from group chat appear one after another.
+A FIGURE sits in front of the laptop.
+Still.
+Watching.
+Holding a PHOTO of Liam.
+
+ON-SCREEN:
+
+JAKE
+“Si Justin talaga ang stalker mo, Liam”
+
+LIAM
+“Tama na, Jake. Hindi na ako natutuwa.”
+
+JAKE
+“Hindi na ‘to biro.”
+
+GRACE
+“Sa tingin ko, worth it na paghinalaan si Justin. “
+
+LIAM
+“Bakit?”
+
+JAKE
+“May dahilan siya na gawin iyon. Diba nga nakuha mo yung internship sa na dapat sa kanya mapupunta”
+
+LIAM
+“Ang babaw naman niya kung ganon”
+
+GRACE
+“Anong gagawin mo ngayon, Liam?”
+
+LIAM
+“So kung siya, ire-report ko ba siya?”
+
+ARCHIE
+“Wala tayo enough evidence against him. Nagmumukha lang tayo tanga.”
+
+JAKE
+“Confront mo muna siya.”
+
+LIAM
+“Edi napahamak pa ako kung siya nga ang stalker”
+
+JAKE
+“Kasama kami syempre at mag-rerecord ako sa cellphone kapag nag-confess”
+
+LIAM
+“Hindi ko alam gagawin ko”
+
+A beat
+
+A new message appears
+
+JUSTIN
+“Mag-usap tayo Liam”
+
+LIAM
+“Bakit?”
+
+JUSTIN
+“May gusto akong sabihin”
+
+LIAM
+“Kung tungkol ‘to sa internship. I’m sorry, hindi naman alam na sayo pala ibibigay”
+
+JUSTIN
+“May dapat kang malaman tungkol sa internship”
+
+LIAM
+“Ano?”
+
+JUSTIN
+“Ayoko sabihin sa chat. Let’s meet up na tayong dalawa lang, hindi kasama friends mo.”
+
+LIAM
+“Baka anong gawin mo sa akin”
+
+JUSTIN
+“Edi sa coffee shop na malapit sa university natin”
+
+LIAM
+“Okay sa akin yung location.”
+
+BACK TO SCENE:
+
+The FIGURE slowly crumples the photo from its hand.
+
+The figure stands up and walk towards the wall full of picture of Liam
+    </pre>
+
+    <h3>Scene 6 – Back to Square One?</h3>
+    <pre class="script-text">
+INT. LIAM’S BEDROOM – AFTERNOON
+
+Liam, Grace, Jake and Archie remain seated at the floor as the news flash on tv.
+
+NEWS ANCHOR
+(V.O)
+“Nag-uulat mula sa Caloocan City, isang Bente Uno anyos na lalaki na si Justin Lopez ang natagpuang patay dito sa kanilang tahanan, kaninang madaling araw. Inaalam pa ang motibo ng pagpatay, Inaalam rin ng pulisya kung konektado ito sa tumataas na bilang ng stalking incident sa Metro Manila.”
+
+Liam remains quiet and his hands are both in his head.
+
+A pause.
+
+LIAM
+“Pati si Justin… What if ako yung sunod na patayin”
+
+Archie sits beside Liam and put his hand to his back to calm him down
+
+ARCHIE
+“Huwag mo ‘yang isipin”
+
+LIAM
+“Paano? Parang lahat ng kakilala ko ay namamatay”
+
+Grace moves close to comfort Liam
+
+LIAM
+“Magkikita dapat kami ngayong hapon, tapos eto”
+
+GRACE
+“Hindi mo kasalanan to Liam. Tyaka, ba’t gusto niya ba makipag-kita sayo sa sa coffee shop?”
+
+LIAM
+“Tungkol daw sa internship”
+
+JAKE
+“Yun lang?”
+
+Liam nods
+
+Archie glances down for a moment
+
+Liam’s phone on the floor BUZZES softly.
+
+UNKNOWN NUMBER
+(preview notification)
+“Kamusta ka?”
+
+At the same time
+
+Grace, sitting nearby, instinctively adjusting something on her bag.
+
+No notification sound.
+
+No visible reason.
+
+But Archie notices a PHONE in the bag besides her phone at the bed.
+
+She looks at Liam’s phone vibration a fraction too quickly… then looks away.
+
+A beat.
+
+ARCHIE 
+(subtle, to himself)
+“…Another phone?”
+
+He doesn’t say it aloud.
+
+Archie stands.
+
+ARCHIE
+“Kumalma muna tayong lahat, lalo kana Liam. Tara, magpahangin muna tayo sa labas”
+
+Liam nods and follows Archie outside the house.
+    </pre>
+
+    <h3>Scene 7 – Friend?</h3>
+    <pre class="script-text">
+EXT. SIDEWALK – AFTERNOON
+
+
+Archie and Liam sit by the sidewalk curb
+
+ARCHIE
+“Liam, naisip mo ba na baka lang yung stalker?”
+
+LIAM
+“Anong ibig mong sabihin?”
+
+ARCHIE
+“I have this gut feeling.”
+
+LIAM
+“Na ano?”
+
+ARCHIE
+“May sinabihan ka ba tungkol sa meeting niyo ni Justin?”
+
+LIAM
+“Hindi, ngayon ko lang sinabi yon sa ibang tao.”
+
+ARCHIE
+“Kahit kay Grace?”
+
+LIAM
+“Ano kinalaman ni Grace dito?”
+
+ARCHIE
+(uneasy)
+“Alam niya kung saan kayo magkikita
+
+LIAM
+“Baka nahulaan niya?”
+
+ARCHIE
+“Wag ka magbulag-bulagan Liam.”
+
+LIAM
+(disbelief)
+“Naririnig mo ba sinasabi mo Archie? Kaibigan natin tong pinagbibintangan mo? Wala pa kayo nila Jake, kilala ko na siya. Hindi siya ganong klaseng tao.”
+
+ARCHIE
+“Liam, meron din siyang another phone beside sa ginagamit niya. What if iyon ang ginagamit niya para imessage ka”
+
+LIAM
+(annoyed)
+“Bawal ba magkaroon ng dalawang phone yung tao, Archie?”
+
+ARCHIE
+“Alam ko nararamdaman mo, Liam. Ayoko rin maniwala pero it’s too coincidental”
+
+LIAM
+“Kalimutan na lang natin to, Archie”
+
+ARCHIE
+“Sige, but promise me, wag mong sabihin tong pinag usapan natin kay Grace. And mag-ingat ka sa kanya”
+
+LIAM
+(sigh)
+“Basta hindi siya ang stalker”
+
+A FIGURE hiding at the corner.
+
+Listening to their conversation.
+    </pre>
+
+    <h3>Scene 8 – Confidential</h3>
+    <pre class="script-text">
+INT. LIAM’S HOUSE – LATE AFTERNOON
+
+Back in Liam’s room, a couple of hours later
+
+Jake
+“Tara na guys, pagabi na.”
+
+ARCHIE
+“... Ako rin, stress na ko sa mga balita ngayon, gusto ko na muna magpahinga.”
+
+LIAM
+“Oh ikaw Grace? Di kapa uuwi?”
+
+GRACE
+“Wala naman akong gagawin sa bahay.”
+
+JAKE
+“Sus, tara na para sabay sabay na tayo.”
+
+LIAM
+“Oo nga Grace, malapit na rin gabihin, malayo pa……”
+
+Archie interrupts immediately.
+
+ARCHIE
+“Sige mauna na kami”
+
+Jake looks at Archie confused. Archie gives him a silent message through his eyes.
+
+Jake just nods and they both pack up their bags.
+
+LIAM
+“Sige, ingat kayo, hatid ko lang to sa sakayan.”
+
+GRACE
+“Ingat kayo.”
+
+Archie nods and force a smile.
+
+The two pairs go the opposite direction
+
+JAKE
+“Bye guys”
+
+EXT. SIDEWALK - DUSK
+
+Archie and Jake walk along the sidewalk.
+
+ARCHIE
+“Jake, may sasabihin ako pero seryosohin mo ‘to”
+
+JAKE
+“Bakit seryoso naman ako palagi–”
+
+ARCHIE
+“This is not the time, Jake. Maaaring mapahamak si Liam”
+
+JAKE
+(surprise)
+“Ano?!”
+
+A beat
+
+ARCHIE
+“Feeling ko si Grace yung stalker.”
+
+JAKE
+(laugh awkwardly)
+“Nagbibiro ka na naman”
+
+ARCHIE
+“I’m telling the truth, hindi mo ba napansin sinabi niya kanina?”
+
+JAKE
+“Alin?”
+
+ARCHIE
+“Sinabi niya sa coffee shop daw sila Justin at Liam magkikita”
+
+JAKE
+“Malay mo baka sinabi ni Liam kay Grace.”
+
+ARCHIE
+“Tinanong ko na si Liam tungkol diyan kanina pero wala pa siyang sinasabihan.”
+
+Jake stops mid-walk and looks at Archie.
+
+Archie met his eyes with determination.
+
+JAKE
+“Shit”
+
+ARCHIE
+“I also noticed her using her extra phone in her bag a while ago. Same timing nung nakareceive si Liam ng text from the unknown person”
+
+JAKE
+“Sinabi mo na ba kay Liam?”
+
+Archie nodded.
+
+ARCHIE
+“Yes pero hindi siya naniniwala. Kaya tayong dalawa na lang ang magpapatuloy ng investigation”
+Jake still can’t grasp the truth and slide his right hand through his hair
+
+JAKE
+“Ano gagawin natin, Archie”
+
+ARCHIE
+(frustrated)
+“Hindi ko alam”
+
+JAKE
+“Shit! Lumabas si Grace kanina pagkatapos niyo lumabas ni Liam”
+
+ARCHIE
+(grabs his shoulder)
+“Seryoso?!”
+
+JAKE
+Sabi niya pupunta muna siya sa cr.
+
+ARCHIE
+“This is bad. I don’t want to assume the worst but….”
+
+JAKE
+“Baka ikaw ang sumunod?”
+
+Archie nods
+
+ARCHIE
+“Jake, listen to me. Find evidence from her house”
+
+JAKE
+“Ayoko! Natatakot ako!”
+
+ARCHIE 
+“Alam ko pero please, do it for us. I’ll make sure to keep Grace busy”
+
+JAKE
+(looks at Archie intently)
+“Okay pero wag mo kaming iwan”
+
+ARCHIE
+(force smile)
+“Hindi ko kayo iiwan, tsaka may utang ka pa sa akin. Kaya next time na magkita tayo bayaran mo ko”
+    </pre>
+
+    <h3>Scene 9 – Truth</h3>
+    <pre class="script-text">
+INT. GRACE’S HOUSE – EVENING
+
+Jake opens the door carefully and walks inside Grace’s house
+
+Jake swiftly goes into Grace’s room to be met with a wall of pictures of Liam. Some had little hearts scribbled onto it, others had messages like: ‘You’ll be mine’ written on it.
+
+JAKE
+(disbelief)
+“Grace… bakit?”
+
+Jake scrambles to get his phone, as he takes multiple photos of the horrific collage Grace made. 
+
+As soon as he’s done, he searches the room. He opens a drawer and spots a journal and promptly picks it up. 
+
+Jakes read the entry and cover his mouth in horror
+
+GRACE
+(V.O)
+JOURNAL ENTRY #223 1/17/26
+“Minsan nahuhuli ko yung sarili ko na nakatingin sa kanya. Hindi ko sinasadya. Parang kusa na lang.”
+
+Jake turned to another page.
+
+JOURNAL ENTRY #244 1/30/26
+“Hindi ko alam kung saan nalaman ni Justin na ako ang dahilan bakit nakuha ni Liam ang internship. Kung sana nanahimik na lang siya, edi sana buhay pa siya ngayon”
+
+And to another page again.
+
+JOURNAL ENTRY #260 2/17/26
+“Gagawin ko ang lahat para maging akin si Liam. I will kill anyone who dares to come between us because we are meant to be”
+
+Jake took a shot each page before putting it back to the drawer.
+
+He opens another drawer and sees Liam’s sweater
+
+JAKE
+“Kaya pala hindi mahanap ni Liam”
+He takes another shot on his phone.
+
+As he lowers it, something catches his eye—
+
+A trash bag behind the door.
+
+A beat.
+
+He slowly approaches.
+
+Grabs it.
+
+Places it on the bed.
+
+Hesitates.
+
+Then opens it—
+
+He freezes.
+
+He stumbles back—
+
+The bag slips off the bed.
+
+THUD.
+
+It hits the floor—
+
+Spilling its contents.
+
+A BLOOD-SOAKED SHIRT.
+
+A KITCHEN KNIFE, its blade stained dark.
+
+Silence.
+
+He just stares.
+
+JAKE
+“Nasa panganib si Archie!”
+    </pre>
+
+    <h3>Scene 10 – False Mirror</h3>
+    <pre class="script-text">
+INT. LIAM’S BEDROOM – EVENING
+
+As Liam is playing video games on his laptop, his phone rings which he picks up.
+
+LIAM
+“Hello?”
+
+JAKE
+(V. O - panicking)
+“...Liam seryoso to, si Grace nga yung stalker.”
+
+LIAM
+“Pati ba naman ikaw nagpapaniwala kay Archie?”
+
+JAKE
+(V.O)
+“Alam ko naman ‘di ka maniniwala, oh eto.”
+
+Jake sends the photos he took from Grace’s bedroom
+
+LIAM
+(desperate)
+“Ano ‘to”
+
+JAKE
+(V.O)
+“Mga gamit ni Grace iyan, nandito ako sa bahay niya”
+
+Liam inspects through the pictures that Jake sent.
+
+Liam collapses each scroll that sits on the bed as support. 
+
+His grip to his phone loosen making the phone falls to the ground.
+
+JAKE
+(V.O)
+“Liam? LIAM?!"
+
+LIAM
+“Nag-sisinungaling ka lang”
+
+JAKE
+(V.O - desperate)
+“Hindi ko sinisiraan si Grace! Buksan mo mata mo Liam, lahat ng ebidensya natagpuan ko kay Grace”
+
+(frustration)
+“Puntahan mo si Archie! Ngayon na! Nasa panganib siya!”
+
+LIAM
+“Pupuntahan ko pero papatunayan ko na hindi stalker si Grace!”
+
+Liam hurriedly leaves his room.
+    </pre>
+
+    <h3>Scene 11 – Confrontation</h3>
+    <pre class="script-text">
+EXT. ALLEYWAY – EVENING
+
+Archie is walking back to his house 
+Grace is hiding in a dark area of the alleyway. 
+
+Archie passed by Grace without noticing
+Grace shows up and raise the rock and smack it to his head
+
+The rock fell together with Archie on the floor bleeding.
+Grace smirks satisfied then kneel down and grab by his hair
+
+GRACE:
+(mocking)
+“Hey, Archie. Miss me?”
+
+ARCHIE
+(breathing heavily)
+“Hayop— hayop ka”
+
+GRACE
+(laugh)
+“No hard feelings, Archie. You can’t poison Liam’s mind”
+
+ARCHIE
+(smirk)
+“Sinasabi ko lang ang totoo”
+
+GRACE
+“Totoo?”
+
+ARCHIE
+“Na isa kang killer. Na pinatay mo si Justin”
+
+GRACE
+“Wala kang alam! Sa akin lang si Liam!” 
+
+ARCHIE
+“You are just a bitter person, Grace”
+
+Grace glares and grabs the rock at the floor and repeatedly smash it to his face
+Every time it drives down, a blood splattered to her face 
+
+Liam arrives at the scene and stop at the scene
+He is breathing heavily.
+
+LIAM
+(shout)
+“Grace!”
+
+Grace stops and look behind where Liam is standing
+Her face is already covered in blood
+
+GRACE
+(stutter)
+“Li—Liam? Anong ginagawa mo dito?”
+
+Liam is still in a state of shock at the scene.
+Grace let’s go of the rock and slowly steps forward
+Liam steps backward.
+
+GRACE
+“Liam, wag kang matakot sa akin. Ginagawa ko lang ‘to para sayo”
+
+LIAM
+(freak out)
+“Totoo nga sinasabi ni Archie”
+
+GRACE
+(tries to calm him)
+“No! Nagsisinungaling lang siya”
+
+LIAM
+“Ano nagsisinungaling?! Kitang kita ng dalawang kong mata yung ginawa mo kay Archie”
+
+GRACE
+(calm)
+“Oh that? Hindi niya kasi mai—”
+
+Liam interrupts her
+
+LIAM
+(raise voice)
+“Ilan pa ba ang kailangan mo patayin para masatisfied ka?!”
+
+(disgusted looks)
+“Ilan!?”
+
+GRACE
+(sigh)
+“Ginawa ko ‘to para sa atin”
+
+LIAM
+“Para sa'tin? Baliw ka ba?!”
+
+GRACE
+“Wala nang hahadlang sa atin”
+
+LIAM
+“Mas masahol ka pa sa hayop.”
+
+GRACE
+(frustrated)
+“Hindi mo alam ang sinasabi mo, Liam.”
+
+LIAM
+(angry)
+“Alam ko, Grace.”
+
+Liam is about to attack Grace
+Grace manage to pull out a gun that is tucked inside her pants
+She points the muzzle to Liam which makes him stops in his track
+
+LIAM
+(calmly)
+“Grace, wag mo iputok. Wag mo na dagdagan ang krimen mo”
+
+GRACE
+“Ginawa ko ito para sayo. Para magkaroon tayo ng chance na maging tayo.”
+
+LIAM
+“Ikaw yung stalker?”
+
+GRACE 
+“Stalker? I prefer it as love”
+
+LIAM
+“Baliw!”
+
+Grace grips the gun tighter. Her hands tremble — but her eyes stay locked on Liam.
+
+GRACE 
+(smiles faintly, almost dreamy)
+“Hindi mo lang naiintindihan… pero maiintindihan mo rin.”
+
+LIAM
+ (shaking, disgusted)
+ “Ano ba talaga ginawa mo, Grace…?”
+Grace exhales slowly. Her expression softens—like she’s about to confess something beautiful, not horrifying.
+GRACE
+ “Gusto mong malaman? Sige… sasabihin ko”
+
+FLASHBACK SEQUENCE – GRACE’S OBSESSION
+MONTAGE – VARIOUS
+INT. LIAM’S HOUSE – MORNING
+LIAM 
+Kukuha lang ako pagkain natin
+
+Liam leaves the room.
+Grace walks around, touching Liam’s things—his books, his photos.
+She picks up his shirt… hug it tightly.
+
+GRACE
+(V.O)
+“Kilalang-kilala na kita… higit pa sa kahit sino.”
+
+INT. CLASSROOM - AFTERNOON 
+Grace enters the classroom and approach the table where Liam left his phone
+She grabs it and shut it down
+She leave the room quietly while holding the
+ phone
+
+GRACE
+(V.O)
+Kailangan ko maniguro na walang kausap na iba
+
+INT. CLASSROOM - AFTERNOON
+
+Empty classroom.
+
+Grace is seated in front of an open laptop.
+
+Grace plugs the phone into the laptop.
+
+She places a phone beside it. Screen unlocked
+
+ “Device Connected” appears on screen.
+ Prompt appears: “Trust this computer?”
+ A click. TRUST.
+A program opens: “Screen Mirroring / Remote Access”
+ Loading…
+Then
+LIAM’S PHONE SCREEN appears on the laptop.
+Live.
+GRACE 
+(V.O)
+“Lagi kitang binabantayan.”
+
+INT. GRACE’S ROOM - NIGHT
+Walls filled with photos of Liam.
+She placed another photo of Liam at the wall
+A large board:
+ “LIAM” written in bold, surrounded by strings and pictures.
+GRACE 
+(V.O)
+“Alam ko kung saan ka pupunta… kung sino kasama mo… kung ano gusto mo.”
+
+INT. GRACE’S ROOM - NIGHT
+She sits at the chair while in front of the monitor
+The monitor shows the  live screen of Liam’s phone
+She is holding the photo of him while quietly watching 
+
+GRACE 
+(V.O)
+Lagi kitang binabantayan, hindi lang sa personal  pati rin sa cellphone mo.
+
+GRACE 
+(V.O)
+Kahit saan ka magpunta… nandoon ako
+
+BACK TO PRESENT — ALLEYWAY
+Grace lowers her head slightly… then looks up to Liam
+
+LIAM
+“Bakit mo ginagawa to, Grace? Baliw ka ba?”
+
+GRACE
+“Hindi ako baliw. Nagmamahal lang ako.”
+
+LIAM
+“Pagmamahal? Hindi ito pagmamahal?!”
+
+GRACE
+“Para sa’kin, oo.”
+
+She tightens her grip on the gun again
+
+GRACE
+“At walang sinuman ang aagaw sayo mula sa akin kahit sarili mo pa”
+
+LIAM
+“Tinuring kita bilang kapatid tapos sasaktan mo lang mga kaibigan natin”
+
+GRACE 
+“Ayoko ng kapatid. Gusto ko ng pagmamahal mo!”
+
+LIAM
+“Hindi mangyayari iyon!”
+
+GRACE
+“No. Kung hindi ka magiging akin, mas mabuti pa na mawala ka na lang “
+
+Grace was about to pull the trigger 
+
+When
+
+Archie barely alive holds Grace foot to distract her
+
+She accidentally loose her grip to the gun as she looks down to Archie
+
+Liam immediately grabs the gun from Grace and point the nuzzle to her
+
+LIAM
+(sad)
+“Sumuko ka na lang, Grace. You need help. Matutulungan ka ng mga pulis sa problema mo”
+
+GRACE
+(laugh hysterically)
+“Tulong? Hindi ko kailangan ng tulong. Maayos ako!”
+
+Grace covers her face and laughs hysterically. 
+
+Liam grips the gun tightly but remains the nuzzle to her.
+
+Siren heard in the background.
+
+GRACE
+“Magbabalik ako Liam. Hangga’t buhay ako, hahanapin kita kahit saan ka man magtago.”
+
+(smile widely)
+“I will find you again, Liam.”
+    </pre>
+
+    <h3>Scene 12 – Escape?</h3>
+    <pre class="script-text">
+EXT. LIAM’S BEDROOM – EVENING
+
+Jake and Liam sit at the bed but the tension is heavy.
+
+JAKE
+Hindi pa rin ako makapaniwala na ganun pala nangyari sa confrontation nyo
+
+LIAM
+(sigh)
+Thank you, Jake. Buti na lang tumawag ka ng pulis baka kung hindi, wala na rin ako.
+
+JAKE
+Kung alam ko lang na ganun nangyari, hindi ko na sana muna pinadala yung proof
+
+LIAM
+(looks down the floor)
+Buhay pa naman ako at nakulong na si….. si Grace
+
+JAKE
+Pero si Archie hindi.
+
+(A beat)
+Okay ka lang?
+
+LIAM
+(shake his head)
+No. Hindi ko alam kung makakarecover pa ba ako sa nangyari na ito
+
+(he holds his hair tightly)
+This is nightmare but real
+
+JAKE
+(nod)
+Maraming nawala sa atin, Liam
+
+A pause
+
+JAKE
+(pats Liam’s shoulder)
+Uwi na ako, Liam. Wag mo sisihin sarili mo sa nangyari.
+
+Liam just gives him a nod and a forceful smile.
+
+Jake leaves the bedroom
+
+Liam grabs the remote and opens the tv.
+
+Urgent music plays.
+A red banner flashes on screen: BREAKING NEWS
+The NEWS ANCHOR looks serious, papers in hand.
+
+NEWS ANCHOR
+(urgent, composed)
+“Magandang gabi. Nakatakas ang pangunahing suspek sa sunod-sunod na pagpatay sa lungsod.”
+
+Liam looks at the tv terrified. 
+
+He lowered his head and place both of his head to his hair
+
+NEWS ANCHOR 
+(V.O.)
+ “Kinilala ang suspek na si Grace Salazar, na sangkot umano sa brutal na pagpatay kina Justin Lopez, at sa tangkang pagpatay kay Archie Reyes.”
+
+LIAM
+(terrified)
+Hindi. Ayoko.
+
+He looks up once again and looks down immediately
+
+LIAM
+Panaginip lang ‘to. Hindi ito totoo.
+
+The open slowly creaks open and Liam is unaware of this
+
+A pair of eyes suddenly appear at the door. 
+
+Grace’s pair of eyes
+
+FADE OUT.
+
+THE END.
+    </pre>
+
+  </div>
+</section>
+
+  <!-- Poster -->
+  <section id="poster">
+    <h2>🖼 Official Poster</h2>
+    <img src="poster/LURKING.png" alt="Official Poster" class="poster-img">
+  </section>
+
+
+    <!-- Credits -->
+<section id="credits">
+  <h2>🎥 Production Ensemble</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="image\sopi.jpg" alt="Sophia Ysabel Dizon" class="credit-photo">
+      <h3>Sophia Ysabel Dizon</h3>
+      <p>Director, Scriptwriter</p>
+    </div>
+    <div class="card">
+      <img src="image\kaye.jpg" alt="Jewel Kaye Zuniega" class="credit-photo">
+      <h3>Jewel Kaye Zuniega</h3>
+      <p>Co-Director, Cameraman, Reporter</p>
+    </div>
+    <div class="card">
+      <img src="image\jerich.jpg" alt="Jerich Jr. Almazan" class="credit-photo">
+      <h3>Jerich Jr. Almazan</h3>
+      <p>Scriptwriter, Cameraman</p>
+    </div>
+    <div class="card">
+      <img src="image\cabiles.jpg" alt="John Paul Cabiles" class="credit-photo">
+      <h3>John Paul Cabiles</h3>
+      <p>Production Team</p>
+    </div>
+    <div class="card">
+      <img src="image\florenz.jpg" alt="Florenz Cipriano" class="credit-photo">
+      <h3>Florenz Cipriano</h3>
+      <p>Extra Actor (Sam), Production Team</p>
+    </div>
+    <div class="card">
+      <img src="image\kurt.jpg" alt="John Kurt Balatucan" class="credit-photo">
+      <h3>John Kurt Balatucan</h3>
+      <p>Lead Actor (Liam)</p>
+    </div>
+    <div class="card">
+      <img src="image\yvanna.jpg" alt="Yvanna Rose-Ann Apostol" class="credit-photo">
+      <h3>Yvanna Rose-Ann Apostol</h3>
+      <p>Lead Actress (Grace)</p>
+    </div>
+    <div class="card">
+      <img src="image\gian.jpg" alt="Gian Singian" class="credit-photo">
+      <h3>Gian Singian</h3>
+      <p>Supporting Actor (Archie)</p>
+    </div>
+    <div class="card">
+      <img src="image\cruz.jpg" alt="John Paul Cruz" class="credit-photo">
+      <h3>John Paul Cruz</h3>
+      <p>Supporting Actor (Jake)</p>
+    </div>
+    <div class="card">
+      <img src="image\joaqin.jpg" alt="Andrei Joaquin Salonga" class="credit-photo">
+      <h3>Andrei Joaquin Salonga</h3>
+      <p>Extra Actor (Justin), Production Team</p>
+    </div>
+  </div>
+</section>
+
+
+    <script>
+      function showSection(id) {
+        document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+      }
+
+      function goToScene(seconds) {
+        const video = document.getElementById('mainFilm');
+        video.currentTime = seconds;
+        showSection('film');
+        video.play();
+      }
+    </script>
+  </body>
+  </html>
